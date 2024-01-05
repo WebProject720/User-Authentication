@@ -9,14 +9,14 @@
 </head>
 <body>
     <main>
-        <form action="" id="SignUpForm">
+        <form method="post" action="http://localhost:5500/post" id="SignUpForm">
             <div class="heading">
                 SignUp
             </div>
             <div class="inputs">
-                <input type="email" name="email" id="email" placeholder=" Enter Email">
-                <input type="number" name="number" id="number" placeholder="Enter Number">
-                <input type="password" name="password" id="password" placeholder="Enter password">
+                <input type="text" name="username" id="username" placeholder="Enter username" required>
+                <input type="email" name="email" id="email" placeholder=" Enter Email" required>
+                <input type="password" name="password" id="password" placeholder="Enter password" required>
                 <input type="submit" value="Save">
             </div>
             <div class="alter">

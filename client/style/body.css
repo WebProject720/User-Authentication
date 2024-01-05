@@ -1,5 +1,5 @@
 body{
-    background-color: gray;
+    background-color: #724343;
     color: white;
     margin: 0%;
     padding: 0%;
@@ -22,6 +22,7 @@ form{
     background-color: rgb(169, 166, 166);
     border-radius: 5px;
     padding: 20px;
+    background: linear-gradient(30deg,#bf5656,#2f2f7a);
 }
 .heading{
     font-size: xx-large;
@@ -36,10 +37,10 @@ form,.inputs{
 }
 .inputs>input{
     background-color: transparent;
-    font-size: x-large;
-    outline: 1px solid white;
-    border: 1px solid white;
-    border-radius: 4px;
+    font-size: large;
+    outline: 0.3px solid white;
+    border: 0.2px solid white;
+    border-radius: 2px;
     color: white;
     padding: 5px;
 }
