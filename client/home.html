@@ -1,18 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="/client/style/body.css">
 </head>
+
 <body>
     <h1>
-        Welcom Sir !
+        Welcom <span id="username">Sir</span> !
     </h1>
     <hr>
     <a href="/client/AuthPage/login.html">Login</a>
     <hr>
     <a href="/client/AuthPage/signup.html">SignUp</a>
+    <button id="logout">Logout</button>
 </body>
+
 </html>
+<script>
+    document.getElementById("logout").addEventListener("click",(e)=>{
+        window.localStorage.removeItem("Authoraization");
+        window.location.href=window.location.origin+"/client/AuthPage/login.html";
+    })
+    async function GetData() {
+        let response = await fetch("http://localhost:5000/data", {
+            method: "POST",
+            body: JSON.stringify({"token":window.localStorage.getItem('Authoraization')}),
+            headers: {
+                "content-type": "application/json"
+            }
+        }).then((json) => {
+            return json.json();
+        }).then((data) => {
+            if (data.status) {
+                document.getElementById("username").innerHTML=data.username;
+            } else {
+                console.log("Something Went Wrong : ", data)
+                window.location.href=window.location.origin+"/client/AuthPage/login.html"
+            }
+        }).catch((err) => {
+            console.log("Page Wrong ERROR : ", err);
+        })
+    }
+    GetData();
+</script>
