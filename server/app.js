@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const jwt=require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const salt_round = 10;
 const cors = require('cors');
@@ -28,8 +29,12 @@ const Model = mongoose.model(process.env.DATABASE, UserModel, process.env.DATABA
 app.get('/',async(req,res)=>{
     const response=await Model.find({});
     res.send(response);
-})
-app.post('/users', async (req, res) => {
+});
+app.delete('/delete', async (req, res) => {
+    const response = await Model.deleteMany({});
+    res.send(response);
+});
+app.post('/login', async (req, res) => {
     const response = await Model.find({ email: req.body.email }, "-_id -updatedAt -__v");
     response.forEach((e) => {
         bcrypt.compare(req.body.password, e.password, function (err, result) {
@@ -43,11 +48,7 @@ app.post('/users', async (req, res) => {
     });
     res.send(false);
 });
-app.delete('/delete', async (req, res) => {
-    const response = await Model.deleteMany({});
-    res.send(response);
-});
-app.post('/post', async (req, res) => {
+app.post('/signup', async (req, res) => {
     //Pain Password to hash password
     bcrypt.hash(req.body.password, salt_round).then(async hash => {
         // console.log(`hash of ${req.body.password} is ${hash}`);
