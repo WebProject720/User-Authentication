@@ -7,7 +7,6 @@ A simple Node.js project for user authentication using Express, JSON Web Token (
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Configuration](#configuration)
 - [Usage](#usage)
 - [Endpoints](#endpoints)
 - [License](#license)
@@ -35,7 +34,11 @@ Before you begin, ensure you have met the following requirements:
    ```bash
    git clone https://github.com/WebProject720/User-Authentication.git
 
+## usage
+
+1. Protect password with encrypt using bcrypt Node JS package
+2. APIs check use JWT and check it with each request
 
 ## license
 
--> Hold by WebProject720[https://github.com/WebProject720]
+-> Hold by WebProject720(https://github.com/WebProject720)
